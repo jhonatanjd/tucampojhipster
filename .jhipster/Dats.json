@@ -1,0 +1,89 @@
+{
+  "applications": ["tucampov3"],
+  "changelogDate": "20220603222638",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "dats",
+  "fields": [
+    {
+      "fieldName": "names",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "surnames",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "directions",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "telephone",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "cellPhone",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mail",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Dats",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "dats",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "client",
+      "otherEntityRelationshipName": "dats",
+      "relationshipName": "client",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "documenType",
+      "otherEntityRelationshipName": "dats",
+      "ownerSide": false,
+      "relationshipName": "documenType",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "producer",
+      "otherEntityRelationshipName": "dats",
+      "relationshipName": "producer",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "administrator",
+      "otherEntityRelationshipName": "dats",
+      "relationshipName": "administrator",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "driver",
+      "otherEntityRelationshipName": "dats",
+      "relationshipName": "driver",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

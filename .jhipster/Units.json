@@ -1,0 +1,27 @@
+{
+  "applications": ["tucampov3"],
+  "changelogDate": "20220603222738",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "units",
+  "fields": [
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Units",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "products",
+      "otherEntityRelationshipName": "units",
+      "relationshipName": "products",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

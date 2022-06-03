@@ -1,0 +1,39 @@
+{
+  "applications": ["tucampov3"],
+  "changelogDate": "20220603223438",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "documen_type",
+  "fields": [
+    {
+      "fieldName": "initials",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "typedocument",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "stateDocument",
+      "fieldType": "State",
+      "fieldValues": "ACTIVE (activo),INACTIVE (inactivo)"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "DocumenType",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "dats",
+      "otherEntityRelationshipName": "documenType",
+      "ownerSide": true,
+      "relationshipName": "dats",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

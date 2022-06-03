@@ -1,0 +1,102 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="tucam-documen-type-heading"
+        data-cy="DocumenTypeCreateUpdateHeading"
+        tucamTranslate="tucampov3App.documenType.home.createOrEditLabel"
+      >
+        Create or edit a Documen Type
+      </h2>
+
+      <div>
+        <tucam-alert-error></tucam-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" tucamTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.documenType.initials" for="field_initials">Initials</label>
+          <input type="text" class="form-control" name="initials" id="field_initials" data-cy="initials" formControlName="initials" />
+          <div *ngIf="editForm.get('initials')!.invalid && (editForm.get('initials')!.dirty || editForm.get('initials')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('initials')?.errors?.required"
+              tucamTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.documenType.typedocument" for="field_typedocument">Typedocument</label>
+          <input
+            type="text"
+            class="form-control"
+            name="typedocument"
+            id="field_typedocument"
+            data-cy="typedocument"
+            formControlName="typedocument"
+          />
+          <div
+            *ngIf="editForm.get('typedocument')!.invalid && (editForm.get('typedocument')!.dirty || editForm.get('typedocument')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('typedocument')?.errors?.required"
+              tucamTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.documenType.stateDocument" for="field_stateDocument">State Document</label>
+          <select
+            class="form-control"
+            name="stateDocument"
+            formControlName="stateDocument"
+            id="field_stateDocument"
+            data-cy="stateDocument"
+          >
+            <option [ngValue]="null">{{ 'tucampov3App.State.null' | translate }}</option>
+            <option *ngFor="let state of stateValues" [value]="state">{{ 'tucampov3App.State.' + state | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.documenType.dats" for="field_dats">Dats</label>
+          <select class="form-control" id="field_dats" data-cy="dats" name="dats" formControlName="dats">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="datsOption.id === editForm.get('dats')!.value?.id ? editForm.get('dats')!.value : datsOption"
+              *ngFor="let datsOption of datsCollection; trackBy: trackDatsById"
+            >
+              {{ datsOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span tucamTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span tucamTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

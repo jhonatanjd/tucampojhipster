@@ -1,0 +1,25 @@
+{
+  "tucampov3App": {
+    "wayToPay": {
+      "home": {
+        "title": "Way To Pays",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Way To Pay",
+        "createOrEditLabel": "Crear o editar Way To Pay",
+        "notFound": "Ningún Way To Pays encontrado"
+      },
+      "created": "Un nuevo Way To Pay ha sido creado con el identificador {{ param }}",
+      "updated": "Un Way To Pay ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Way To Pay ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Way To Pay {{ id }}?"
+      },
+      "detail": {
+        "title": "Way To Pay"
+      },
+      "id": "ID",
+      "description": "Description",
+      "invoice": "Invoice"
+    }
+  }
+}

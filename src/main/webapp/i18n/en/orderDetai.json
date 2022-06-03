@@ -1,0 +1,25 @@
+{
+  "tucampov3App": {
+    "orderDetai": {
+      "home": {
+        "title": "Order Detais",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Order Detai",
+        "createOrEditLabel": "Create or edit a Order Detai",
+        "notFound": "No Order Detais found"
+      },
+      "created": "A new Order Detai is created with identifier {{ param }}",
+      "updated": "A Order Detai is updated with identifier {{ param }}",
+      "deleted": "A Order Detai is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Order Detai {{ id }}?"
+      },
+      "detail": {
+        "title": "Order Detai"
+      },
+      "id": "ID",
+      "products": "Products",
+      "sale": "Sale"
+    }
+  }
+}

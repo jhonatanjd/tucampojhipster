@@ -1,0 +1,31 @@
+{
+  "tucampov3App": {
+    "shopping": {
+      "home": {
+        "title": "Shoppings",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Shopping",
+        "createOrEditLabel": "Crear o editar Shopping",
+        "notFound": "Ningún Shoppings encontrado"
+      },
+      "created": "Un nuevo Shopping ha sido creado con el identificador {{ param }}",
+      "updated": "Un Shopping ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Shopping ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Shopping {{ id }}?"
+      },
+      "detail": {
+        "title": "Shopping"
+      },
+      "id": "ID",
+      "nameProducts": "Name Products",
+      "amount": "Amount",
+      "directions": "Directions",
+      "city": "City",
+      "orderdate": "Orderdate",
+      "dateOfDelivery": "Date Of Delivery",
+      "invoice": "Invoice",
+      "client": "Client"
+    }
+  }
+}

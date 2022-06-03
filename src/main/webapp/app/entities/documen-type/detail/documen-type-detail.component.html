@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="documenType">
+      <h2 data-cy="documenTypeDetailsHeading"><span tucamTranslate="tucampov3App.documenType.detail.title">Documen Type</span></h2>
+
+      <hr />
+
+      <tucam-alert-error></tucam-alert-error>
+
+      <tucam-alert></tucam-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span tucamTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ documenType.id }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.documenType.initials">Initials</span></dt>
+        <dd>
+          <span>{{ documenType.initials }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.documenType.typedocument">Typedocument</span></dt>
+        <dd>
+          <span>{{ documenType.typedocument }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.documenType.stateDocument">State Document</span></dt>
+        <dd>
+          <span tucamTranslate="{{ 'tucampov3App.State.' + documenType.stateDocument }}">{{ documenType.stateDocument }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.documenType.dats">Dats</span></dt>
+        <dd>
+          <div *ngIf="documenType.dats">
+            <a [routerLink]="['/dats', documenType.dats?.id, 'view']">{{ documenType.dats?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span tucamTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/documen-type', documenType.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span tucamTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

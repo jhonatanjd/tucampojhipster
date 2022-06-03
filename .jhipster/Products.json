@@ -1,0 +1,45 @@
+{
+  "applications": ["tucampov3"],
+  "changelogDate": "20220603222838",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "products",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Products",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "units",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "units",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "sale",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "sale",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "category",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "orderDetai",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "orderDetai",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

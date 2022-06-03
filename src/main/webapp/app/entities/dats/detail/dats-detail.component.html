@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="dats">
+      <h2 data-cy="datsDetailsHeading"><span tucamTranslate="tucampov3App.dats.detail.title">Dats</span></h2>
+
+      <hr />
+
+      <tucam-alert-error></tucam-alert-error>
+
+      <tucam-alert></tucam-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span tucamTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ dats.id }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.dats.names">Names</span></dt>
+        <dd>
+          <span>{{ dats.names }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.dats.surnames">Surnames</span></dt>
+        <dd>
+          <span>{{ dats.surnames }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.dats.directions">Directions</span></dt>
+        <dd>
+          <span>{{ dats.directions }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.dats.telephone">Telephone</span></dt>
+        <dd>
+          <span>{{ dats.telephone }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.dats.cellPhone">Cell Phone</span></dt>
+        <dd>
+          <span>{{ dats.cellPhone }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.dats.mail">Mail</span></dt>
+        <dd>
+          <span>{{ dats.mail }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.dats.city">City</span></dt>
+        <dd>
+          <span>{{ dats.city }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.dats.user">User</span></dt>
+        <dd>
+          <span>{{ dats.user?.id }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.dats.client">Client</span></dt>
+        <dd>
+          <div *ngIf="dats.client">
+            <a [routerLink]="['/client', dats.client?.id, 'view']">{{ dats.client?.id }}</a>
+          </div>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.dats.producer">Producer</span></dt>
+        <dd>
+          <div *ngIf="dats.producer">
+            <a [routerLink]="['/producer', dats.producer?.id, 'view']">{{ dats.producer?.id }}</a>
+          </div>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.dats.administrator">Administrator</span></dt>
+        <dd>
+          <div *ngIf="dats.administrator">
+            <a [routerLink]="['/administrator', dats.administrator?.id, 'view']">{{ dats.administrator?.id }}</a>
+          </div>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.dats.driver">Driver</span></dt>
+        <dd>
+          <div *ngIf="dats.driver">
+            <a [routerLink]="['/driver', dats.driver?.id, 'view']">{{ dats.driver?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span tucamTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/dats', dats.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span tucamTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="shopping">
+      <h2 data-cy="shoppingDetailsHeading"><span tucamTranslate="tucampov3App.shopping.detail.title">Shopping</span></h2>
+
+      <hr />
+
+      <tucam-alert-error></tucam-alert-error>
+
+      <tucam-alert></tucam-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span tucamTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ shopping.id }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.shopping.nameProducts">Name Products</span></dt>
+        <dd>
+          <span>{{ shopping.nameProducts }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.shopping.amount">Amount</span></dt>
+        <dd>
+          <span>{{ shopping.amount }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.shopping.directions">Directions</span></dt>
+        <dd>
+          <span>{{ shopping.directions }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.shopping.city">City</span></dt>
+        <dd>
+          <span>{{ shopping.city }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.shopping.orderdate">Orderdate</span></dt>
+        <dd>
+          <span>{{ shopping.orderdate | formatMediumDate }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.shopping.dateOfDelivery">Date Of Delivery</span></dt>
+        <dd>
+          <span>{{ shopping.dateOfDelivery | formatMediumDate }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.shopping.invoice">Invoice</span></dt>
+        <dd>
+          <div *ngIf="shopping.invoice">
+            <a [routerLink]="['/invoice', shopping.invoice?.id, 'view']">{{ shopping.invoice?.id }}</a>
+          </div>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.shopping.client">Client</span></dt>
+        <dd>
+          <div *ngIf="shopping.client">
+            <a [routerLink]="['/client', shopping.client?.id, 'view']">{{ shopping.client?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span tucamTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/shopping', shopping.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span tucamTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

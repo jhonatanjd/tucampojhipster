@@ -1,0 +1,25 @@
+{
+  "tucampov3App": {
+    "orderDetai": {
+      "home": {
+        "title": "Order Detais",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Order Detai",
+        "createOrEditLabel": "Crear o editar Order Detai",
+        "notFound": "Ningún Order Detais encontrado"
+      },
+      "created": "Un nuevo Order Detai ha sido creado con el identificador {{ param }}",
+      "updated": "Un Order Detai ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Order Detai ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Order Detai {{ id }}?"
+      },
+      "detail": {
+        "title": "Order Detai"
+      },
+      "id": "ID",
+      "products": "Products",
+      "sale": "Sale"
+    }
+  }
+}

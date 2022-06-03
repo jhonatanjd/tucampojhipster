@@ -1,0 +1,9 @@
+{
+  "tucampov3App": {
+    "State": {
+      "null": "",
+      "ACTIVE": "activo",
+      "INACTIVE": "inactivo"
+    }
+  }
+}

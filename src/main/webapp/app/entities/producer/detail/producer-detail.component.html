@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="producer">
+      <h2 data-cy="producerDetailsHeading"><span tucamTranslate="tucampov3App.producer.detail.title">Producer</span></h2>
+
+      <hr />
+
+      <tucam-alert-error></tucam-alert-error>
+
+      <tucam-alert></tucam-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span tucamTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ producer.id }}</span>
+        </dd>
+        <dt><span tucamTranslate="tucampov3App.producer.nameProduct">Name Product</span></dt>
+        <dd>
+          <span>{{ producer.nameProduct }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span tucamTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/producer', producer.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span tucamTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

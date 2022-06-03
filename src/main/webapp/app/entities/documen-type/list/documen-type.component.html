@@ -1,0 +1,114 @@
+<div>
+  <h2 id="page-heading" data-cy="DocumenTypeHeading">
+    <span tucamTranslate="tucampov3App.documenType.home.title">Documen Types</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span tucamTranslate="tucampov3App.documenType.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-documen-type"
+        [routerLink]="['/documen-type/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span tucamTranslate="tucampov3App.documenType.home.createLabel"> Create a new Documen Type </span>
+      </button>
+    </div>
+  </h2>
+
+  <tucam-alert-error></tucam-alert-error>
+
+  <tucam-alert></tucam-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="documenTypes?.length === 0">
+    <span tucamTranslate="tucampov3App.documenType.home.notFound">No documenTypes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="documenTypes && documenTypes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr tucamSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" tucamSortBy="id"><span tucamTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" tucamSortBy="initials">
+            <span tucamTranslate="tucampov3App.documenType.initials">Initials</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="typedocument">
+            <span tucamTranslate="tucampov3App.documenType.typedocument">Typedocument</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="stateDocument">
+            <span tucamTranslate="tucampov3App.documenType.stateDocument">State Document</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="dats.id">
+            <span tucamTranslate="tucampov3App.documenType.dats">Dats</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let documenType of documenTypes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/documen-type', documenType.id, 'view']">{{ documenType.id }}</a>
+          </td>
+          <td>{{ documenType.initials }}</td>
+          <td>{{ documenType.typedocument }}</td>
+          <td tucamTranslate="{{ 'tucampov3App.State.' + documenType.stateDocument }}">{{ documenType.stateDocument }}</td>
+          <td>
+            <div *ngIf="documenType.dats">
+              <a [routerLink]="['/dats', documenType.dats?.id, 'view']">{{ documenType.dats?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/documen-type', documenType.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" tucamTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/documen-type', documenType.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" tucamTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(documenType)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" tucamTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="documenTypes && documenTypes.length > 0">
+    <div class="d-flex justify-content-center">
+      <tucam-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></tucam-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

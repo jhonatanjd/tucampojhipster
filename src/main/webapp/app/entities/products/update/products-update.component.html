@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="tucam-products-heading" data-cy="ProductsCreateUpdateHeading" tucamTranslate="tucampov3App.products.home.createOrEditLabel">
+        Create or edit a Products
+      </h2>
+
+      <div>
+        <tucam-alert-error></tucam-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" tucamTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.products.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.products.sale" for="field_sale">Sale</label>
+          <select class="form-control" id="field_sale" data-cy="sale" name="sale" formControlName="sale">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="saleOption.id === editForm.get('sale')!.value?.id ? editForm.get('sale')!.value : saleOption"
+              *ngFor="let saleOption of salesSharedCollection; trackBy: trackSaleById"
+            >
+              {{ saleOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.products.category" for="field_category">Category</label>
+          <select class="form-control" id="field_category" data-cy="category" name="category" formControlName="category">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="categoryOption.id === editForm.get('category')!.value?.id ? editForm.get('category')!.value : categoryOption"
+              *ngFor="let categoryOption of categoriesSharedCollection; trackBy: trackCategoryById"
+            >
+              {{ categoryOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.products.orderDetai" for="field_orderDetai">Order Detai</label>
+          <select class="form-control" id="field_orderDetai" data-cy="orderDetai" name="orderDetai" formControlName="orderDetai">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                orderDetaiOption.id === editForm.get('orderDetai')!.value?.id ? editForm.get('orderDetai')!.value : orderDetaiOption
+              "
+              *ngFor="let orderDetaiOption of orderDetaisSharedCollection; trackBy: trackOrderDetaiById"
+            >
+              {{ orderDetaiOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span tucamTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span tucamTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

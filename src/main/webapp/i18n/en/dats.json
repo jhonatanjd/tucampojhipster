@@ -1,0 +1,36 @@
+{
+  "tucampov3App": {
+    "dats": {
+      "home": {
+        "title": "Dats",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Dats",
+        "createOrEditLabel": "Create or edit a Dats",
+        "notFound": "No Dats found"
+      },
+      "created": "A new Dats is created with identifier {{ param }}",
+      "updated": "A Dats is updated with identifier {{ param }}",
+      "deleted": "A Dats is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dats {{ id }}?"
+      },
+      "detail": {
+        "title": "Dats"
+      },
+      "id": "ID",
+      "names": "Names",
+      "surnames": "Surnames",
+      "directions": "Directions",
+      "telephone": "Telephone",
+      "cellPhone": "Cell Phone",
+      "mail": "Mail",
+      "city": "City",
+      "user": "User",
+      "client": "Client",
+      "documenType": "Documen Type",
+      "producer": "Producer",
+      "administrator": "Administrator",
+      "driver": "Driver"
+    }
+  }
+}

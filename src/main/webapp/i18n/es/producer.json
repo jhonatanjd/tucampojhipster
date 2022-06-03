@@ -1,0 +1,26 @@
+{
+  "tucampov3App": {
+    "producer": {
+      "home": {
+        "title": "Producers",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Producer",
+        "createOrEditLabel": "Crear o editar Producer",
+        "notFound": "Ningún Producers encontrado"
+      },
+      "created": "Un nuevo Producer ha sido creado con el identificador {{ param }}",
+      "updated": "Un Producer ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Producer ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Producer {{ id }}?"
+      },
+      "detail": {
+        "title": "Producer"
+      },
+      "id": "ID",
+      "nameProduct": "Name Product",
+      "dats": "Dats",
+      "sale": "Sale"
+    }
+  }
+}

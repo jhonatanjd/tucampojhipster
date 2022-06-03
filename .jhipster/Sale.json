@@ -1,0 +1,80 @@
+{
+  "applications": ["tucampov3"],
+  "changelogDate": "20220603222938",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "sale",
+  "fields": [
+    {
+      "fieldName": "nameProducts",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "amountKilo",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "priceKilo",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "priceTotal",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "availableDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "stateTransportations",
+      "fieldType": "Transportations",
+      "fieldValues": "NO (trasnporte),SI (notrasnporte)"
+    },
+    {
+      "fieldName": "descriptions",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Sale",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "anonymous",
+      "otherEntityRelationshipName": "sale",
+      "relationshipName": "anonymous",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "producer",
+      "otherEntityRelationshipName": "sale",
+      "relationshipName": "producer",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "orderDetai",
+      "otherEntityRelationshipName": "sale",
+      "relationshipName": "orderDetai",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "products",
+      "otherEntityRelationshipName": "sale",
+      "relationshipName": "products",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

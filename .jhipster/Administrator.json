@@ -1,0 +1,22 @@
+{
+  "applications": ["tucampov3"],
+  "changelogDate": "20220603223238",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "administrator",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Administrator",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "dats",
+      "otherEntityRelationshipName": "administrator",
+      "relationshipName": "dats",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

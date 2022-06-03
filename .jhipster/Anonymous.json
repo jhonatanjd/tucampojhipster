@@ -1,0 +1,22 @@
+{
+  "applications": ["tucampov3"],
+  "changelogDate": "20220603223038",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "anonymous",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Anonymous",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "sale",
+      "otherEntityRelationshipName": "anonymous",
+      "relationshipName": "sale",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

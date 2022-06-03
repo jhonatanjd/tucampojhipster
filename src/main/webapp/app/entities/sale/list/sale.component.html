@@ -1,0 +1,130 @@
+<div>
+  <h2 id="page-heading" data-cy="SaleHeading">
+    <span tucamTranslate="tucampov3App.sale.home.title">Sales</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span tucamTranslate="tucampov3App.sale.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-sale"
+        [routerLink]="['/sale/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span tucamTranslate="tucampov3App.sale.home.createLabel"> Create a new Sale </span>
+      </button>
+    </div>
+  </h2>
+
+  <tucam-alert-error></tucam-alert-error>
+
+  <tucam-alert></tucam-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="sales?.length === 0">
+    <span tucamTranslate="tucampov3App.sale.home.notFound">No sales found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="sales && sales.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr tucamSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" tucamSortBy="id"><span tucamTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" tucamSortBy="nameProducts">
+            <span tucamTranslate="tucampov3App.sale.nameProducts">Name Products</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="amountKilo">
+            <span tucamTranslate="tucampov3App.sale.amountKilo">Amount Kilo</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="priceKilo">
+            <span tucamTranslate="tucampov3App.sale.priceKilo">Price Kilo</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="priceTotal">
+            <span tucamTranslate="tucampov3App.sale.priceTotal">Price Total</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="city"><span tucamTranslate="tucampov3App.sale.city">City</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" tucamSortBy="availableDate">
+            <span tucamTranslate="tucampov3App.sale.availableDate">Available Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="stateTransportations">
+            <span tucamTranslate="tucampov3App.sale.stateTransportations">State Transportations</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="descriptions">
+            <span tucamTranslate="tucampov3App.sale.descriptions">Descriptions</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="producer.id">
+            <span tucamTranslate="tucampov3App.sale.producer">Producer</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="orderDetai.id">
+            <span tucamTranslate="tucampov3App.sale.orderDetai">Order Detai</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of sales; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/sale', sale.id, 'view']">{{ sale.id }}</a>
+          </td>
+          <td>{{ sale.nameProducts }}</td>
+          <td>{{ sale.amountKilo }}</td>
+          <td>{{ sale.priceKilo }}</td>
+          <td>{{ sale.priceTotal }}</td>
+          <td>{{ sale.city }}</td>
+          <td>{{ sale.availableDate | formatMediumDate }}</td>
+          <td tucamTranslate="{{ 'tucampov3App.Transportations.' + sale.stateTransportations }}">{{ sale.stateTransportations }}</td>
+          <td>{{ sale.descriptions }}</td>
+          <td>
+            <div *ngIf="sale.producer">
+              <a [routerLink]="['/producer', sale.producer?.id, 'view']">{{ sale.producer?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="sale.orderDetai">
+              <a [routerLink]="['/order-detai', sale.orderDetai?.id, 'view']">{{ sale.orderDetai?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/sale', sale.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" tucamTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/sale', sale.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" tucamTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(sale)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" tucamTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="sales && sales.length > 0">
+    <div class="d-flex justify-content-center">
+      <tucam-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></tucam-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

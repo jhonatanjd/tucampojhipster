@@ -1,0 +1,25 @@
+{
+  "tucampov3App": {
+    "units": {
+      "home": {
+        "title": "Units",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Units",
+        "createOrEditLabel": "Crear o editar Units",
+        "notFound": "Ningún Units encontrado"
+      },
+      "created": "Un nuevo Units ha sido creado con el identificador {{ param }}",
+      "updated": "Un Units ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Units ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Units {{ id }}?"
+      },
+      "detail": {
+        "title": "Units"
+      },
+      "id": "ID",
+      "description": "Description",
+      "products": "Products"
+    }
+  }
+}

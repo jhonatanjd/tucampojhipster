@@ -1,0 +1,9 @@
+{
+  "tucampov3App": {
+    "Transportations": {
+      "null": "",
+      "NO": "trasnporte",
+      "SI": "notrasnporte"
+    }
+  }
+}

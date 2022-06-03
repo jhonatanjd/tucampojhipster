@@ -1,0 +1,24 @@
+{
+  "tucampov3App": {
+    "anonymous": {
+      "home": {
+        "title": "Anonymous",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Anonymous",
+        "createOrEditLabel": "Crear o editar Anonymous",
+        "notFound": "Ningún Anonymous encontrado"
+      },
+      "created": "Un nuevo Anonymous ha sido creado con el identificador {{ param }}",
+      "updated": "Un Anonymous ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Anonymous ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Anonymous {{ id }}?"
+      },
+      "detail": {
+        "title": "Anonymous"
+      },
+      "id": "ID",
+      "sale": "Sale"
+    }
+  }
+}

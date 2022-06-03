@@ -1,0 +1,146 @@
+<div>
+  <h2 id="page-heading" data-cy="DatsHeading">
+    <span tucamTranslate="tucampov3App.dats.home.title">Dats</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span tucamTranslate="tucampov3App.dats.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-dats"
+        [routerLink]="['/dats/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span tucamTranslate="tucampov3App.dats.home.createLabel"> Create a new Dats </span>
+      </button>
+    </div>
+  </h2>
+
+  <tucam-alert-error></tucam-alert-error>
+
+  <tucam-alert></tucam-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="dats?.length === 0">
+    <span tucamTranslate="tucampov3App.dats.home.notFound">No dats found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="dats && dats.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr tucamSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" tucamSortBy="id"><span tucamTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" tucamSortBy="names">
+            <span tucamTranslate="tucampov3App.dats.names">Names</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="surnames">
+            <span tucamTranslate="tucampov3App.dats.surnames">Surnames</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="directions">
+            <span tucamTranslate="tucampov3App.dats.directions">Directions</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="telephone">
+            <span tucamTranslate="tucampov3App.dats.telephone">Telephone</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="cellPhone">
+            <span tucamTranslate="tucampov3App.dats.cellPhone">Cell Phone</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="mail"><span tucamTranslate="tucampov3App.dats.mail">Mail</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" tucamSortBy="city"><span tucamTranslate="tucampov3App.dats.city">City</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" tucamSortBy="user.id">
+            <span tucamTranslate="tucampov3App.dats.user">User</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="client.id">
+            <span tucamTranslate="tucampov3App.dats.client">Client</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="producer.id">
+            <span tucamTranslate="tucampov3App.dats.producer">Producer</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="administrator.id">
+            <span tucamTranslate="tucampov3App.dats.administrator">Administrator</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" tucamSortBy="driver.id">
+            <span tucamTranslate="tucampov3App.dats.driver">Driver</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dats of dats; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/dats', dats.id, 'view']">{{ dats.id }}</a>
+          </td>
+          <td>{{ dats.names }}</td>
+          <td>{{ dats.surnames }}</td>
+          <td>{{ dats.directions }}</td>
+          <td>{{ dats.telephone }}</td>
+          <td>{{ dats.cellPhone }}</td>
+          <td>{{ dats.mail }}</td>
+          <td>{{ dats.city }}</td>
+          <td>
+            {{ dats.user?.id }}
+          </td>
+          <td>
+            <div *ngIf="dats.client">
+              <a [routerLink]="['/client', dats.client?.id, 'view']">{{ dats.client?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="dats.producer">
+              <a [routerLink]="['/producer', dats.producer?.id, 'view']">{{ dats.producer?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="dats.administrator">
+              <a [routerLink]="['/administrator', dats.administrator?.id, 'view']">{{ dats.administrator?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="dats.driver">
+              <a [routerLink]="['/driver', dats.driver?.id, 'view']">{{ dats.driver?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/dats', dats.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" tucamTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/dats', dats.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" tucamTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(dats)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" tucamTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="dats && dats.length > 0">
+    <div class="d-flex justify-content-center">
+      <tucam-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></tucam-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

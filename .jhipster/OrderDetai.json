@@ -1,0 +1,28 @@
+{
+  "applications": ["tucampov3"],
+  "changelogDate": "20220603223538",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "order_detai",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "OrderDetai",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "products",
+      "otherEntityRelationshipName": "orderDetai",
+      "relationshipName": "products",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "sale",
+      "otherEntityRelationshipName": "orderDetai",
+      "relationshipName": "sale",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

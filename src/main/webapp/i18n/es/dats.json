@@ -1,0 +1,36 @@
+{
+  "tucampov3App": {
+    "dats": {
+      "home": {
+        "title": "Dats",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Dats",
+        "createOrEditLabel": "Crear o editar Dats",
+        "notFound": "Ningún Dats encontrado"
+      },
+      "created": "Un nuevo Dats ha sido creado con el identificador {{ param }}",
+      "updated": "Un Dats ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Dats ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Dats {{ id }}?"
+      },
+      "detail": {
+        "title": "Dats"
+      },
+      "id": "ID",
+      "names": "Names",
+      "surnames": "Surnames",
+      "directions": "Directions",
+      "telephone": "Telephone",
+      "cellPhone": "Cell Phone",
+      "mail": "Mail",
+      "city": "City",
+      "user": "User",
+      "client": "Client",
+      "documenType": "Documen Type",
+      "producer": "Producer",
+      "administrator": "Administrator",
+      "driver": "Driver"
+    }
+  }
+}

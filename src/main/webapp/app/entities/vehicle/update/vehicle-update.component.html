@@ -1,0 +1,145 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="tucam-vehicle-heading" data-cy="VehicleCreateUpdateHeading" tucamTranslate="tucampov3App.vehicle.home.createOrEditLabel">
+        Create or edit a Vehicle
+      </h2>
+
+      <div>
+        <tucam-alert-error></tucam-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" tucamTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.vehicle.bodyworkType" for="field_bodyworkType">Bodywork Type</label>
+          <input
+            type="text"
+            class="form-control"
+            name="bodyworkType"
+            id="field_bodyworkType"
+            data-cy="bodyworkType"
+            formControlName="bodyworkType"
+          />
+          <div
+            *ngIf="editForm.get('bodyworkType')!.invalid && (editForm.get('bodyworkType')!.dirty || editForm.get('bodyworkType')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('bodyworkType')?.errors?.required"
+              tucamTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.vehicle.ability" for="field_ability">Ability</label>
+          <input type="number" class="form-control" name="ability" id="field_ability" data-cy="ability" formControlName="ability" />
+          <div *ngIf="editForm.get('ability')!.invalid && (editForm.get('ability')!.dirty || editForm.get('ability')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('ability')?.errors?.required"
+              tucamTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('ability')?.errors?.number"
+              tucamTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.vehicle.brand" for="field_brand">Brand</label>
+          <input type="text" class="form-control" name="brand" id="field_brand" data-cy="brand" formControlName="brand" />
+          <div *ngIf="editForm.get('brand')!.invalid && (editForm.get('brand')!.dirty || editForm.get('brand')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('brand')?.errors?.required"
+              tucamTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.vehicle.model" for="field_model">Model</label>
+          <input type="text" class="form-control" name="model" id="field_model" data-cy="model" formControlName="model" />
+          <div *ngIf="editForm.get('model')!.invalid && (editForm.get('model')!.dirty || editForm.get('model')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('model')?.errors?.required"
+              tucamTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.vehicle.licenseLate" for="field_licenseLate">License Late</label>
+          <input
+            type="text"
+            class="form-control"
+            name="licenseLate"
+            id="field_licenseLate"
+            data-cy="licenseLate"
+            formControlName="licenseLate"
+          />
+          <div *ngIf="editForm.get('licenseLate')!.invalid && (editForm.get('licenseLate')!.dirty || editForm.get('licenseLate')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('licenseLate')?.errors?.required"
+              tucamTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.vehicle.color" for="field_color">Color</label>
+          <input type="text" class="form-control" name="color" id="field_color" data-cy="color" formControlName="color" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.vehicle.driver" for="field_driver">Driver</label>
+          <select class="form-control" id="field_driver" data-cy="driver" name="driver" formControlName="driver">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="driverOption.id === editForm.get('driver')!.value?.id ? editForm.get('driver')!.value : driverOption"
+              *ngFor="let driverOption of driversCollection; trackBy: trackDriverById"
+            >
+              {{ driverOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span tucamTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span tucamTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

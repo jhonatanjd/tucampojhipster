@@ -1,0 +1,195 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="tucam-shopping-heading" data-cy="ShoppingCreateUpdateHeading" tucamTranslate="tucampov3App.shopping.home.createOrEditLabel">
+        Create or edit a Shopping
+      </h2>
+
+      <div>
+        <tucam-alert-error></tucam-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" tucamTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.shopping.nameProducts" for="field_nameProducts">Name Products</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nameProducts"
+            id="field_nameProducts"
+            data-cy="nameProducts"
+            formControlName="nameProducts"
+          />
+          <div
+            *ngIf="editForm.get('nameProducts')!.invalid && (editForm.get('nameProducts')!.dirty || editForm.get('nameProducts')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nameProducts')?.errors?.required"
+              tucamTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.shopping.amount" for="field_amount">Amount</label>
+          <input type="number" class="form-control" name="amount" id="field_amount" data-cy="amount" formControlName="amount" />
+          <div *ngIf="editForm.get('amount')!.invalid && (editForm.get('amount')!.dirty || editForm.get('amount')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('amount')?.errors?.required"
+              tucamTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('amount')?.errors?.number"
+              tucamTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.shopping.directions" for="field_directions">Directions</label>
+          <input
+            type="text"
+            class="form-control"
+            name="directions"
+            id="field_directions"
+            data-cy="directions"
+            formControlName="directions"
+          />
+          <div *ngIf="editForm.get('directions')!.invalid && (editForm.get('directions')!.dirty || editForm.get('directions')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('directions')?.errors?.required"
+              tucamTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.shopping.city" for="field_city">City</label>
+          <input type="text" class="form-control" name="city" id="field_city" data-cy="city" formControlName="city" />
+          <div *ngIf="editForm.get('city')!.invalid && (editForm.get('city')!.dirty || editForm.get('city')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('city')?.errors?.required" tucamTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.shopping.orderdate" for="field_orderdate">Orderdate</label>
+          <div class="input-group">
+            <input
+              id="field_orderdate"
+              data-cy="orderdate"
+              type="text"
+              class="form-control"
+              name="orderdate"
+              ngbDatepicker
+              #orderdateDp="ngbDatepicker"
+              formControlName="orderdate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="orderdateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          <div *ngIf="editForm.get('orderdate')!.invalid && (editForm.get('orderdate')!.dirty || editForm.get('orderdate')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('orderdate')?.errors?.required"
+              tucamTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.shopping.dateOfDelivery" for="field_dateOfDelivery"
+            >Date Of Delivery</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateOfDelivery"
+              data-cy="dateOfDelivery"
+              type="text"
+              class="form-control"
+              name="dateOfDelivery"
+              ngbDatepicker
+              #dateOfDeliveryDp="ngbDatepicker"
+              formControlName="dateOfDelivery"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateOfDeliveryDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          <div
+            *ngIf="
+              editForm.get('dateOfDelivery')!.invalid && (editForm.get('dateOfDelivery')!.dirty || editForm.get('dateOfDelivery')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dateOfDelivery')?.errors?.required"
+              tucamTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.shopping.invoice" for="field_invoice">Invoice</label>
+          <select class="form-control" id="field_invoice" data-cy="invoice" name="invoice" formControlName="invoice">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="invoiceOption.id === editForm.get('invoice')!.value?.id ? editForm.get('invoice')!.value : invoiceOption"
+              *ngFor="let invoiceOption of invoicesSharedCollection; trackBy: trackInvoiceById"
+            >
+              {{ invoiceOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" tucamTranslate="tucampov3App.shopping.client" for="field_client">Client</label>
+          <select class="form-control" id="field_client" data-cy="client" name="client" formControlName="client">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="clientOption.id === editForm.get('client')!.value?.id ? editForm.get('client')!.value : clientOption"
+              *ngFor="let clientOption of clientsSharedCollection; trackBy: trackClientById"
+            >
+              {{ clientOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span tucamTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span tucamTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

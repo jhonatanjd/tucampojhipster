@@ -1,0 +1,29 @@
+{
+  "applications": ["tucampov3"],
+  "changelogDate": "20220603222538",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "driver",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Driver",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "dats",
+      "otherEntityRelationshipName": "driver",
+      "relationshipName": "dats",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "vehicle",
+      "otherEntityRelationshipName": "driver",
+      "ownerSide": false,
+      "relationshipName": "vehicle",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

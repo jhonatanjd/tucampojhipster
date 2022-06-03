@@ -1,0 +1,27 @@
+{
+  "tucampov3App": {
+    "documenType": {
+      "home": {
+        "title": "Documen Types",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Documen Type",
+        "createOrEditLabel": "Crear o editar Documen Type",
+        "notFound": "Ningún Documen Types encontrado"
+      },
+      "created": "Un nuevo Documen Type ha sido creado con el identificador {{ param }}",
+      "updated": "Un Documen Type ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Documen Type ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Documen Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Documen Type"
+      },
+      "id": "ID",
+      "initials": "Initials",
+      "typedocument": "Typedocument",
+      "stateDocument": "State Document",
+      "dats": "Dats"
+    }
+  }
+}

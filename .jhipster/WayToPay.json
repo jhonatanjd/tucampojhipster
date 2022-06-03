@@ -1,0 +1,27 @@
+{
+  "applications": ["tucampov3"],
+  "changelogDate": "20220603222038",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "way_to_pay",
+  "fields": [
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "WayToPay",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "invoice",
+      "otherEntityRelationshipName": "wayToPay",
+      "relationshipName": "invoice",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

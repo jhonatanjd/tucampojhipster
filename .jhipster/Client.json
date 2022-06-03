@@ -1,0 +1,34 @@
+{
+  "applications": ["tucampov3"],
+  "changelogDate": "20220603222338",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "client",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Client",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "shopping",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "shopping",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "invoice",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "invoice",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "dats",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "dats",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

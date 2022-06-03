@@ -1,0 +1,184 @@
+application {
+    config {
+        baseName tucampov3
+        applicationType monolith
+        packageName co.edu.sena
+        authenticationType jwt
+        devDatabaseType mysql
+        prodDatabaseType mysql
+        cacheProvider no
+        buildTool maven
+        clientFramework angularX
+        enableTranslation true
+        nativeLanguage es
+        languages [en, es]
+        //websocket spring-websocket
+        //testFrameworks [cucumber]
+        //entitySuffix false
+        jhiPrefix tucam
+        reactive false
+        serverPort 8080
+        searchEngine false
+         clientTheme cyborg
+        clientThemeVariant primary
+           }
+    entities *
+}
+enum State {
+ACTIVE(activo),  
+INACTIVE(inactivo)
+}
+
+entity WayToPay {
+description String 
+}
+
+entity Invoice {
+unitPrice String required
+amount Double required
+priceTotal Double required
+}
+
+relationship OneToMany {
+WayToPay to Invoice 
+} 
+ 
+entity Shopping {
+nameProducts String required
+amount Double required
+directions String required
+city String required
+orderdate LocalDate required
+dateOfDelivery LocalDate required
+}
+relationship OneToMany {
+ Invoice to Shopping
+} 
+ entity Client {
+}
+relationship OneToMany {
+ Invoice to Client
+} 
+relationship OneToMany {
+  Client to Shopping
+} 
+
+entity Vehicle {
+bodyworkType String required
+ability Double required
+brand String required
+model String required
+licenseLate String required
+color String 
+}
+
+entity Driver{
+}
+ relationship OneToOne{
+ Vehicle to Driver
+}
+entity Dats {
+names String required
+surnames String required
+directions String required
+telephone Integer 
+cellPhone Integer required
+mail String required
+city String required
+}
+relationship ManyToOne{
+ Dats to Client
+}
+relationship OneToOne
+{
+ Dats to User
+}
+entity Units {
+description String 
+}
+entity Products {
+name String 
+}
+relationship OneToMany
+{
+ Products to Units
+}
+entity Sale {
+nameProducts String required
+amountKilo Double required
+priceKilo Double required
+priceTotal Double required
+city String required
+availableDate LocalDate required
+stateTransportations Transportations 
+descriptions String 
+}
+entity Anonymous{
+}
+enum Transportations {
+NO(trasnporte)  
+SI(notrasnporte)
+}
+
+relationship OneToMany
+{
+ Sale to Anonymous
+}
+relationship ManyToOne
+{
+ Products to Sale
+}
+entity Producer {
+nameProduct String required
+}
+relationship ManyToOne
+{
+  Sale to Producer
+}
+relationship OneToMany
+{
+  Producer to Dats
+}
+entity Administrator {
+}
+relationship OneToMany
+{
+  Administrator to Dats
+}
+relationship OneToMany
+{
+  Driver to Dats
+}
+entity Category {
+name String required 
+stateCategory State
+}
+relationship OneToMany
+{
+  Category to Products
+}
+ entity DocumenType  {
+initials String required
+typedocument String required
+stateDocument State
+}
+relationship OneToOne
+{
+  DocumenType to Dats
+}
+entity OrderDetai {
+}
+relationship OneToMany
+{
+  OrderDetai to Products
+}
+relationship OneToMany
+{
+  OrderDetai to Sale
+}
+dto *with mapstruct
+service *with serviceImpl
+paginate * with pagination
+
+
+
